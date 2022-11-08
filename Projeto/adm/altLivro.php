@@ -1,7 +1,5 @@
 <?php
-
     session_start();
-
     include_once("../servidor.php");
 ?>
 <!DOCTYPE html>
@@ -20,9 +18,7 @@
             <?php
                 $sql = " SELECT * FROM TB_LIVRO WHERE COD_LIV = " . $_GET["cod_liv"];
                 $resp = $POO->query($sql);
-
                 $$campo = mysqli_fetch_array($resp); 
-
             ?>
             <section class="col-md-8">
                 <h3 class="mt-5"> Alterar Livro </h2>
@@ -42,25 +38,20 @@
                             <?php
                                 $sql = " SELECT * FROM tb_editora";
 
-                                // Executar - forma procedural
+                                // Executar procedural
 
                                 $resp = $POO->query($sql);
-
                             ?>
                             <select class="form-control" name="ed" id="ed">
                                 <option>Selecione ...</option>
                                 <?php
-                                
-                                //forma procedural
-
+                                //procedural
                                     while($ed = $resp->fetch_array()){
                                         echo "<option value='" . $ed["cod_ed"] . "'";
-                                        
                                         if($campo["cod_ed"] == $ed["cod_ed"]){
                                             echo "selected";
                                         }
-
-                                        echo ">" . $ed["nome_ed"] . "</option>";
+                                         echo ">" . $ed["nome_ed"] . "</option>";
                                     }
                                 ?>
                             </select>
@@ -79,7 +70,6 @@
                         <button type="submit" class="btn btn-primary">Alterar</button>
                     </form>
             </section>
-
             <section class="col-md-2"></section>
         </div>
     </div>
